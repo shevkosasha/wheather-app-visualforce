@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Enter_City</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enter City</shortDescription>
+        <value>Enter City</value>
+    </labels>
+    <labels>
+        <fullName>Feells_like_temperature</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Feells like temperature</shortDescription>
+        <value>Feels like</value>
+    </labels>
+    <labels>
+        <fullName>OppCheckStageError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>OppCheckStageError</shortDescription>
+        <value>Cannot set stage &quot;Closed Won&quot; if current stage is &quot;Negotiation&quot;/&quot;Quote Sent&quot;</value>
+    </labels>
+    <labels>
+        <fullName>Show_weather</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Show weather</shortDescription>
+        <value>Show weather</value>
+    </labels>
+    <labels>
+        <fullName>Weather_App</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather App</shortDescription>
+        <value>Weather App</value>
+    </labels>
+    <labels>
+        <fullName>Weather_Temperature</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather Temperature</shortDescription>
+        <value>temp, °C:</value>
+    </labels>
+    <labels>
+        <fullName>Weather_humidity</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather humidity</shortDescription>
+        <value>humidity</value>
+    </labels>
+    <labels>
+        <fullName>Weather_or_Forecast</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather or Forecast</shortDescription>
+        <value>Select what do you want to see: current weather or 5 day weather forecast</value>
+    </labels>
+    <labels>
+        <fullName>Weather_wind_speed</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather wind speed</shortDescription>
+        <value>wind speed</value>
+    </labels>
+</CustomLabels>

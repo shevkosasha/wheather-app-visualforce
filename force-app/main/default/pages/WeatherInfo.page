@@ -1,0 +1,67 @@
+<apex:page controller="WeatherController" showHeader="false" lightningStylesheets="true">
+    <apex:slds />
+    <apex:stylesheet value="{!$Resource.WeatherCSS}" />  
+    <apex:form>        
+        <apex:pageBlock>
+            <apex:pageBlockSection>
+                <h1 class="heading">{!$Label.Weather_App}</h1>
+            </apex:pageBlockSection> 
+            <apex:pageBlockSection title="{!$Label.Enter_City}" collapsible="false">
+                <apex:inputText value="{!city}" id="sf_city" styleClass="slds-input"/>                
+                <apex:commandButton id="showMeWeather_btn" styleClass="slds-button slds-button_outline-brand showMeWeather_btn" action="{! showMeWeather }" value="{!$Label.Show_weather}" rerender="out" status="status"/>
+            </apex:pageBlockSection>           
+            <apex:pageBlockSection title="{!$Label.Weather_or_Forecast}" collapsible="false">
+                <apex:selectList value="{!requestMode}" styleClass="slds-select weather-or-forecast" multiselect="false" size="1" title="Select" >
+                    <apex:selectOptions value="{!items}" /><br/>
+                </apex:selectList>
+            </apex:pageBlockSection>            
+        </apex:pageBlock>        
+    </apex:form>
+    <apex:pageBlock >       
+        <apex:outputPanel id="out">
+            <apex:messages></apex:messages>
+            <apex:actionStatus id="status">                
+                <apex:facet name="start" >
+                    <c:LoaderComponent/>
+                </apex:facet> 
+                <apex:facet name="stop"> 
+                    <apex:outputPanel id="weather_outputPanel" styleClass="weather_outputPanel">     
+                        <h2 id="location">
+                            <apex:outputText label="city" value="{!location.city}" id="location_city"/>
+                            <apex:outputText label="country" value="{!IF(NOT(ISNULL(location.country)), ', ' + location.country, '') }" id="location_country"/><br/>
+                        </h2>                                 
+                        <div id="weather_output" class="info weather_output">                            
+                            <apex:repeat value="{!weatherItems}" var="item" id="theRepeat"> 
+                                <p>
+                                    <apex:image id="theImage" value="{!item.imgSrc}" width="40" height="40" alt=""/>
+                                </p> 
+                                <p>                                    
+                                    <apex:outputText label="temp" value=" {!item.day}" id="theValue_day"/><br />
+                                    <apex:outputText label="temp" value=" {!item.formattedDate}" id="theValue_date"/> <br />
+                                    {!$Label.Weather_Temperature} <apex:outputText label="temp" value=" {!item.temp}" id="theValue_temp"/>, <br />
+                                    {!$Label.Feells_like_temperature} <apex:outputText label="feelsLike" value=" {!item.feelsLike}" id="theValue_feelsLike"/>, 
+                                    <strong><apex:outputText label="description" value=" {!item.description}" id="theValue_description"/></strong>,
+                                    {!$Label.Weather_humidity} <strong><apex:outputText label="humidity" value=" {!item.humidity}" id="theValue_humidity"/></strong>, 
+                                    {!$Label.Weather_wind_speed} <strong><apex:outputText label="wind" value=" {!item.wind}" id="theValue_wind"/></strong> 
+                                </p>      
+                                <hr />                              
+                            </apex:repeat>                            
+                        </div>                    
+                    </apex:outputPanel> 
+                </apex:facet> 
+            </apex:actionstatus> 
+        </apex:outputPanel> 
+    </apex:pageBlock>
+    <script>
+        window.addEventListener('change', e => {
+            if (e.target.classList.contains('weather-or-forecast')) {
+                const weatherBtn = document.querySelector('.showMeWeather_btn');
+                weatherBtn.value = weatherBtn.value.split(' ')[0] + ' ' + e.target.value;
+            }            
+        });
+    </script>
+    
+</apex:page>
+
+
+
